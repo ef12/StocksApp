@@ -20,11 +20,6 @@ def get_store_tickers(_mktcap_min = 1200000, _mktcap_max = 10000000):
     tickers = gt.get_tickers_filtered(mktcap_min = _mktcap_min, mktcap_max = _mktcap_max)
     # Check that the amount of tickers isn't more than 1800
     print("The amount of stocks chosen to observe: " + str(len(tickers)))
-    # Remove the old folder and create a new one
-    # These two lines remove the Stocks folder and then recreate it in order to remove old stocks.
-    # if (os.path.isdir(os.getcwd()+Folder)):
-    #     shutil.rmtree(os.getcwd()+Folder)
-    # os.mkdir(os.getcwd()+Folder)
     # Holds the amount of API calls we executed
     Amount_of_API_Calls = 0
     # This while loop is reponsible for storing the historical data for each ticker in our list. Note that yahoo finance sometimes incurs json.decode errors and because of this we are sleeping for 2 seconds after each iteration, also if a call fails we are going to try to execute it again. Also, do not make more than 2,000 calls per hour or 48,000 calls per day or Yahoo Finance may block your IP. The clause "(Amount_of_API_Calls < 1800)" below will stop the loop from making too many calls to the yfinance API.Prepare for this loop to take some time. It is pausing for 2 seconds after importing each stock.
@@ -64,6 +59,3 @@ def get_store_tickers(_mktcap_min = 1200000, _mktcap_max = 10000000):
     df.to_csv(macd_dir+"MACD.csv", index = False)  # Save the dataframe to a csv without the index column
 
     return i - Stocks_Not_Imported
-
-
-    
