@@ -4,7 +4,7 @@ from email.mime.multipart import MIMEMultipart
 from  emailInfo import EMAIL, PASSWORD
 
 # Define a folder to hold the tickers
-Folder = "/Daily_Stock_Report/MACD/"
+Folder = "MACD/"
 
 def get_propose_and_email():
     Path = os.getcwd() + Folder
