@@ -1,5 +1,5 @@
-# Financial
-Python scripts for share analysis
+# StocksApp
+An application to get stock prices, analys them and send an e-mail- with stock to buy and which to sell
 
 ### Importing Necessary Libraries
 Here is a breakdown of the use-case for each library:
