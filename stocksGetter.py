@@ -41,7 +41,7 @@ def get_store_tickers(_mktcap_min = 1200000, _mktcap_max = 10000000):
             elif 2 == result:
                 new_data.append([stockName, "Buy"])
             # Pauses the loop for two seconds so we don't cause issues with Yahoo Finance's backend operations
-            time.sleep(1)
+            time.sleep(2)
             Amount_of_API_Calls += 1 
             Stock_Failure = 0
             i += 1  # Iteration to the next ticker
