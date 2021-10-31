@@ -3,14 +3,14 @@
 # If you have a list of your own you would like to use just create a new list instead of using this, 
 # for example: tickers = ["FB", "AMZN", ...]
 # Necessary Libraries
+Folder = "/Daily_Stock_Report/"
 
 def get_store_tickers(_mktcap_min = 1200000, _mktcap_max = 10000000):
     import yfinance as yf, pandas as pd, os, time, shutil
     from get_all_tickers import get_tickers as gt
     import calcMACD as macd
 
-    Folder = "/Daily_Stock_Report/"
-
+    create_folder()
     tickers = gt.get_tickers_filtered(mktcap_min = _mktcap_min, mktcap_max = _mktcap_max)
     # Check that the amount of tickers isn't more than 1800
     print("The amount of stocks chosen to observe: " + str(len(tickers)))
@@ -49,3 +49,11 @@ def get_store_tickers(_mktcap_min = 1200000, _mktcap_max = 10000000):
     print("The amount of stocks we successfully imported: " + str(i - Stocks_Not_Imported))
 
     return i - Stocks_Not_Imported
+
+def create_folder():
+    import os, shutil
+
+    # These two lines remove the Stocks folder and then recreate it in order to remove old stocks.
+    if (os.path.isdir(os.getcwd()+Folder)):
+        shutil.rmtree(os.getcwd()+Folder)
+    os.mkdir(os.getcwd()+Folder)
